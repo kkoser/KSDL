@@ -31,7 +31,7 @@ void TextView::drawInRect(SDL_Rect aFrame, SDL_Event e) {
     if (texture.getHeight() <= 0) {
         texture.loadFromRenderedText(text, textColor, font);
     }
-    texture.render(aFrame.x + getFrame().x, aFrame.y + getFrame().y);
+    texture.render(aFrame.x + getFrame().x, aFrame.y + getFrame().y, &frame);
 }
 
 std::string TextView::getText() const {

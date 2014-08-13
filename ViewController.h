@@ -21,7 +21,8 @@ public:
     
     virtual ~ViewController();
     
-    View* getView();
+    View* getView() const;
+    SDL_Renderer* getRenderer() const;
     
     virtual void handleEvent(SDL_Event e);
     

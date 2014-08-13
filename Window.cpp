@@ -37,8 +37,6 @@ Window::Window( const char *title, int aX, int aY, int aHeight, int aWidth, Uint
 
 Window::~Window() {
     delete rootViewController;
-    delete renderer;
-    delete window;
 }
 
 SDL_Renderer* Window::getRenderer() {

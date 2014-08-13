@@ -57,7 +57,7 @@ bool LTexture::loadFromRenderedText( string textureText, SDL_Color textColor, TT
     free();
     
     //Render text surface
-    SDL_Surface* textSurface = TTF_RenderText_Solid( gFont, textureText.c_str(), textColor );
+    SDL_Surface* textSurface = TTF_RenderText_Blended( gFont, textureText.c_str(), textColor );
     if( textSurface == NULL )
     {
         //printf( "Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError() );
@@ -152,7 +152,7 @@ void LTexture::render( int x, int y, SDL_Rect* clip, double angle, SDL_Point* ce
     }
     
     //Render to screen
-    SDL_RenderCopyEx( renderer, mTexture, clip, &renderQuad, angle, center, flip );
+    SDL_RenderCopyEx( renderer, mTexture, NULL, &renderQuad, angle, center, flip );
 }
 //------------------------------------------------------------------------------
 int LTexture::getWidth()

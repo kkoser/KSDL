@@ -20,8 +20,12 @@ ViewController::~ViewController() {
     delete view;
 }
 
-View* ViewController::getView() {
+View* ViewController::getView() const {
     return view;
+}
+
+SDL_Renderer* ViewController::getRenderer() const {
+    return renderer;
 }
 
 void ViewController::handleEvent(SDL_Event e) {
@@ -30,6 +34,6 @@ void ViewController::handleEvent(SDL_Event e) {
 
 void ViewController::draw(SDL_Event e) {
     // @todo remove the need for an empty rect.
-    SDL_Rect empty = {0, 0, 500, 500};
+    SDL_Rect empty = {0, 0, 0, 0};
     view->drawInRect(empty, e);
 }
