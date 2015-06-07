@@ -33,10 +33,17 @@ Window::Window( const char *title, int aX, int aY, int aHeight, int aWidth, Uint
     window = SDL_CreateWindow(title, aX, aY, aHeight, aWidth, aFlags);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     printf("created renderer with error: %s\n", SDL_GetError() );
+    
+    SDL_Surface *winSurface = SDL_GetWindowSurface(window);
+    SDL_SetSurfaceBlendMode(winSurface, SDL_BLENDMODE_MOD);
+    SDL_UpdateWindowSurface(window);
+    SDL_FreeSurface(winSurface);
 }
 
 Window::~Window() {
     delete rootViewController;
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
 }
 
 SDL_Renderer* Window::getRenderer() {

@@ -25,19 +25,22 @@ public:
     
     virtual void drawInRect( SDL_Rect aRect, SDL_Event e );
     
+    SDL_Color getBackgroundColor() const;
     SDL_Renderer* getRenderer() const;
     SDL_Rect getFrame() const;
     
     virtual void handleEvent( SDL_Event e );
     
+    void setBackgroundColor( SDL_Color aColor );
     void setFrame( SDL_Rect aFrame );
     void setRenderer( SDL_Renderer *aRenderer );
     
 protected:
-    SDL_Rect frame = {};
+    SDL_Rect frame = {0,0,0,0};
     SDL_Renderer *renderer;
     
 private:
+    SDL_Color backgroundColor = {0,255,0,255};
     vector<View *> subviews;
 };
 

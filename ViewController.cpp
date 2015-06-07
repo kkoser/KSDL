@@ -34,6 +34,6 @@ void ViewController::handleEvent(SDL_Event e) {
 
 void ViewController::draw(SDL_Event e) {
     // @todo remove the need for an empty rect.
-    SDL_Rect empty = {0, 0, 0, 0};
+    SDL_Rect empty = {0, 0, view->getFrame().h, view->getFrame().w};
     view->drawInRect(empty, e);
 }

@@ -27,6 +27,10 @@ void View::addSubview(View *v, int index) {
 }
 
 void View::drawInRect(SDL_Rect aRect, SDL_Event e) {
+    // Draw the view's background
+    SDL_SetRenderDrawColor(renderer, backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a);
+    SDL_RenderFillRect(renderer, &frame);
+
     vector<View *>::iterator iter;
     SDL_Rect newRect;
     
@@ -39,6 +43,10 @@ void View::drawInRect(SDL_Rect aRect, SDL_Event e) {
     for (iter = subviews.begin(); iter != subviews.end(); ++iter) {
         (*iter)->drawInRect( newRect, e );
     }
+}
+
+SDL_Color View::getBackgroundColor() const {
+    return backgroundColor;
 }
 
 SDL_Renderer* View::getRenderer() const {
@@ -54,6 +62,10 @@ void View::handleEvent(SDL_Event e) {
     for (iter = subviews.begin(); iter != subviews.end(); ++iter) {
         (*iter)->handleEvent( e );
     }
+}
+
+void View::setBackgroundColor(SDL_Color aColor) {
+    backgroundColor = aColor;
 }
 
 void View::setFrame(SDL_Rect aFrame) {
