@@ -23,7 +23,7 @@ public:
     virtual ~View();
     void addSubview(View *v, int index = 0);
     
-    virtual void drawInRect( SDL_Rect aRect, SDL_Event e );
+    virtual void drawInRect( SDL_Rect aRect );
     
     SDL_Color getBackgroundColor() const;
     SDL_Renderer* getRenderer() const;

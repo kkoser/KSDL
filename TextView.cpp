@@ -26,7 +26,9 @@ TextView::TextView(std::string aString, std::string aFontFamily, SDL_Color aColo
     if(font == NULL) printf("font fail: %s\n", TTF_GetError());
 }
 
-void TextView::drawInRect(SDL_Rect aFrame, SDL_Event e) {
+void TextView::drawInRect(SDL_Rect aFrame) {
+    View::drawInRect(aFrame);
+
     // Lazy load the text texture.
     if (texture.getHeight() <= 0) {
         texture.loadFromRenderedText(text, textColor, font);

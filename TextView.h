@@ -18,7 +18,7 @@ class TextView : public View {
 public:
     TextView( std::string aString, std::string aFontFamily, SDL_Color aColor, int aSize, SDL_Rect aFrame, SDL_Renderer *aRenderer );
     
-    void drawInRect(SDL_Rect aFrame, SDL_Event e);
+    virtual void drawInRect(SDL_Rect aFrame);
     
     std::string getText() const;
     SDL_Color getTextColor() const;

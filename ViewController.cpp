@@ -29,11 +29,12 @@ SDL_Renderer* ViewController::getRenderer() const {
 }
 
 void ViewController::handleEvent(SDL_Event e) {
-    draw(e);
+    view->handleEvent(e);
+    draw();
 }
 
-void ViewController::draw(SDL_Event e) {
+void ViewController::draw() {
     // @todo remove the need for an empty rect.
     SDL_Rect empty = {0, 0, view->getFrame().h, view->getFrame().w};
-    view->drawInRect(empty, e);
+    view->drawInRect(empty);
 }

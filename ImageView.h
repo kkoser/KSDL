@@ -32,7 +32,7 @@ public:
     SDL_RendererFlip flipRight();
     SDL_RendererFlip flipLeft();
     
-    virtual void drawInRect( SDL_Rect aRect, SDL_Event e );
+    virtual void drawInRect( SDL_Rect aRect );
     
 private:
     double degs; //degrees of rotation

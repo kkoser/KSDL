@@ -81,12 +81,13 @@ void ImageView::load() {
     }
 }
 
-void ImageView::drawInRect(SDL_Rect aRect, SDL_Event e) {
+void ImageView::drawInRect(SDL_Rect aRect) {
+    View::drawInRect(aRect);
+
     load();
     // @todo Add support for scaling based on frame size.
     texture.render( aRect.x + frame.x, aRect.y + frame.y, &frame, degs, NULL, flipDir);
     
-    View::drawInRect(aRect, e);
 }
 
 void ImageView::setDegs(double value){

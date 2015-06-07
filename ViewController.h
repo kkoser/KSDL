@@ -27,7 +27,7 @@ public:
     virtual void handleEvent(SDL_Event e);
     
     //the main method of the viewcontroller
-    virtual void draw(SDL_Event e);
+    virtual void draw();
 private:
     SDL_Renderer *renderer;
     View *view;
