@@ -10,6 +10,7 @@
 #define __KSDL__Window__
 
 #include <SDl2/SDL.h>
+#include <stack>
 
 #include "ViewController.h"
 
@@ -24,10 +25,12 @@ public:
     void run();
     
     void setRootViewController(ViewController *aViewController);
+    void pushViewController(ViewController * aViewController);
+    void popViewController();
     
 private:
     SDL_Renderer *renderer;
-    ViewController *rootViewController;
+    std::stack<ViewController *> viewControllerStack;
     SDL_Window *window;
 };
 

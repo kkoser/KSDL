@@ -24,13 +24,14 @@ TextView::TextView(std::string aString, std::string aFontFamily, SDL_Color aColo
     
     font = TTF_OpenFont(aFontFamily.c_str(), aSize);
     if(font == NULL) printf("font fail: %s\n", TTF_GetError());
+    dirty = true;
 }
 
 void TextView::drawInRect(SDL_Rect aFrame) {
     View::drawInRect(aFrame);
 
     // Lazy load the text texture.
-    if (texture.getHeight() <= 0) {
+    if (dirty) {
         texture.loadFromRenderedText(text, textColor, font);
     }
     texture.render(aFrame.x + getFrame().x, aFrame.y + getFrame().y, &frame);
@@ -46,8 +47,10 @@ SDL_Color TextView::getTextColor() const {
 
 void TextView::setText(std::string aString) {
     text = aString;
+    dirty = true;
 }
 
 void TextView::setTextColor(SDL_Color aColor) {
     textColor = aColor;
+    dirty = true;
 }

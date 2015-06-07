@@ -28,6 +28,10 @@ SDL_Renderer* ViewController::getRenderer() const {
     return renderer;
 }
 
+Window* ViewController::getWindow() const {
+    return window;
+}
+
 void ViewController::handleEvent(SDL_Event e) {
     view->handleEvent(e);
     draw();
@@ -37,4 +41,8 @@ void ViewController::draw() {
     // @todo remove the need for an empty rect.
     SDL_Rect empty = {0, 0, view->getFrame().h, view->getFrame().w};
     view->drawInRect(empty);
+}
+
+void ViewController::setWindow(Window *aWindow) {
+    window = aWindow;
 }

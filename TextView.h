@@ -31,6 +31,7 @@ private:
     SDL_Color textColor;
     LTexture texture;
     TTF_Font *font;
+    bool dirty;
 };
 
 #endif /* defined(__KSDL__TextView__) */

@@ -41,7 +41,6 @@ Window::Window( const char *title, int aX, int aY, int aHeight, int aWidth, Uint
 }
 
 Window::~Window() {
-    delete rootViewController;
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
 }
@@ -51,11 +50,15 @@ SDL_Renderer* Window::getRenderer() {
 }
 
 ViewController* Window::getRootViewController() {
-    return rootViewController;
+    return viewControllerStack.top();
 }
 
 void Window::run() {
-    if(rootViewController != NULL) {
+    if (viewControllerStack.empty()) {
+        return;
+    }
+    ViewController *vc = viewControllerStack.top();
+    if(vc != NULL) {
         SDL_Event e;
         SDL_Event empty; // Needed to clear the event
         bool running = true;
@@ -71,7 +74,7 @@ void Window::run() {
                 running = false;
             }
             
-            rootViewController->handleEvent(e);
+            vc->handleEvent(e);
             
             //Update screen
             SDL_RenderPresent( renderer );
@@ -81,6 +84,24 @@ void Window::run() {
     }
 }
 
+// This method clears the current ViewController stack and then pushes the given
+// ViewController onto the bottom of that stack
+// NOTE: This method will destroy the current ViewController stack
 void Window::setRootViewController(ViewController *aViewController) {
-    rootViewController = aViewController;
+    viewControllerStack = std::stack<ViewController *>();
+    viewControllerStack.push(aViewController);
+    aViewController->setWindow(this);
+}
+
+void Window::pushViewController(ViewController *aViewController) {
+    viewControllerStack.push(aViewController);
+    aViewController->setWindow(this);
+}
+
+// Removes the top ViewController from the navigation stack
+// The top ViewController will be destroyed and deallocated
+void Window::popViewController() {
+    ViewController *vc = viewControllerStack.top();
+    viewControllerStack.pop();
+    delete vc;
 }
