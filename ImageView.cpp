@@ -33,7 +33,7 @@ ImageView::ImageView( std::string aFileName, SDL_Renderer *aRenderer ) : View({0
     imageFrame.w = texture.getWidth();
     imageFrame.h = texture.getHeight();
     
-    View::View( imageFrame, aRenderer );
+    setFrame(imageFrame);
 }
 
 ImageView::ImageView( SDL_Rect aFrame, std::string aFileName, SDL_Renderer *aRenderer) : View(aFrame, aRenderer), texture(aRenderer) {
@@ -55,12 +55,12 @@ ImageView::ImageView( SDL_Rect aFrame, std::string aFileName, SDL_Renderer *aRen
     load();
     
     SDL_Rect imageFrame;
-    imageFrame.x = 0;
-    imageFrame.y = 0;
+    imageFrame.x = aFrame.x;
+    imageFrame.y = aFrame.y;
     imageFrame.w = texture.getWidth();
     imageFrame.h = texture.getHeight();
     
-    View::View( imageFrame, aRenderer );
+    setFrame(imageFrame);
 }
 
 //copy constructor

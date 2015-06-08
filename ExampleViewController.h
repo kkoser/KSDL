@@ -17,6 +17,8 @@ class ExampleViewController : public ViewController {
 public:
     ExampleViewController(SDL_Renderer *aRenderer, SDL_Rect aFrame);
     virtual ~ExampleViewController();
+    
+    virtual void handleEvent(SDL_Event e);
 };
 
 #endif /* defined(__KSDL__ExampleViewController__) */

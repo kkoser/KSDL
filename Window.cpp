@@ -76,6 +76,11 @@ void Window::run() {
             
             vc->handleEvent(e);
             
+            // Need to update the active ViewController here so that if the last one gets popped, we have something to draw
+            vc = viewControllerStack.top();
+
+            vc->draw();
+            
             //Update screen
             SDL_RenderPresent( renderer );
             SDL_Delay(4);
@@ -100,7 +105,12 @@ void Window::pushViewController(ViewController *aViewController) {
 
 // Removes the top ViewController from the navigation stack
 // The top ViewController will be destroyed and deallocated
+// If there is only one ViewController on the stack, this does nothing
 void Window::popViewController() {
+    // We cannot allow there to be no vc on the stack
+    if (viewControllerStack.size() <= 1) {
+        return;
+    }
     ViewController *vc = viewControllerStack.top();
     viewControllerStack.pop();
     delete vc;

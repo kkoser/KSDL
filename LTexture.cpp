@@ -21,11 +21,7 @@
 #include <cmath>
 using namespace std;
 
-LTexture::LTexture(SDL_Renderer *aRenderer) {
-    renderer = aRenderer;
-    mTexture = NULL;
-	mWidth = 0;
-	mHeight = 0;
+LTexture::LTexture(SDL_Renderer *aRenderer) : mWidth(0), mHeight(0), renderer(aRenderer), mTexture(NULL) {
 }
 
 void LTexture::setColor( Uint8 red, Uint8 green, Uint8 blue )
