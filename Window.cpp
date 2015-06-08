@@ -43,6 +43,12 @@ Window::Window( const char *title, int aX, int aY, int aHeight, int aWidth, Uint
 Window::~Window() {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
+    // delete all of the ViewControllers.
+    while (!viewControllerStack.empty()) {
+        ViewController* vc = viewControllerStack.top();
+        viewControllerStack.pop();
+        delete vc;
+    }
 }
 
 SDL_Renderer* Window::getRenderer() {
