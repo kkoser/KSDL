@@ -21,7 +21,7 @@ public:
     
     void callback(Button *btn);
     
-    virtual const void buttonClicked(const Button &button);
+    virtual void buttonClicked(const Button &button);
     };
 
 #endif /* defined(__KSDL__ExampleViewController__) */

@@ -18,11 +18,10 @@ class Button;
 class ButtonResponder {
 public:
     virtual ~ButtonResponder();
-    virtual const void buttonClicked( const Button &button ) = 0;
+    virtual void buttonClicked( const Button &button ) = 0;
 };
 
 class Button : public View {
-//    typedef void (T::*ButtonCallback)(Button *btn);
 public:
 
     Button(SDL_Rect aFrame, SDL_Renderer *aRenderer, std::string title,ButtonResponder &listener);

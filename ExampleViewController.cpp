@@ -24,7 +24,7 @@ ExampleViewController::~ExampleViewController()
 {
 }
 
-const void ExampleViewController::buttonClicked(const Button &button) {
+void ExampleViewController::buttonClicked(const Button &button) {
     std::cout<<"Clicked a button!"<<std::endl;
 }
 
