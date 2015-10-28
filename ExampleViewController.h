@@ -12,13 +12,16 @@
 #include <iostream>
 
 #include "ViewController.h"
+#include "Button.h"
 
-class ExampleViewController : public ViewController {
+class ExampleViewController : public ViewController, ButtonResponder {
 public:
     ExampleViewController(SDL_Renderer *aRenderer, SDL_Rect aFrame);
     virtual ~ExampleViewController();
     
-    virtual void handleEvent(SDL_Event e);
-};
+    void callback(Button *btn);
+    
+    virtual const void buttonClicked(const Button &button);
+    };
 
 #endif /* defined(__KSDL__ExampleViewController__) */

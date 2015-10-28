@@ -14,18 +14,10 @@
 #include "Window.h"
 
 SecondViewController::SecondViewController(SDL_Renderer *aRenderer, SDL_Rect aFrame) : ViewController(aRenderer, aFrame) {
-    TextView *text = new TextView("Second View Controller", "/Library/Fonts/Arial.ttf", {255,0,0}, 40, {150, 200, 300, 100}, aRenderer);
+    TextView *text = new TextView("Second View Controller", "/Library/Fonts/Arial.ttf", {255,0,0}, 40, aFrame, aRenderer);
     getView()->addSubview(text);
 }
 
 SecondViewController::~SecondViewController()
 {
-}
-
-void SecondViewController::handleEvent(SDL_Event e) {
-    if (e.type != SDL_MOUSEBUTTONDOWN) {
-        return;
-    }
-    
-    getWindow()->popViewController();
 }

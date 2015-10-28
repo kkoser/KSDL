@@ -40,7 +40,7 @@ protected:
     SDL_Renderer *renderer;
     
 private:
-    SDL_Color backgroundColor = {0,255,0,255};
+    SDL_Color backgroundColor = {0,0,0,255};
     vector<View *> subviews;
 };
 

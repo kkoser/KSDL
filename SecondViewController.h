@@ -17,8 +17,6 @@ class SecondViewController : public ViewController {
 public:
     SecondViewController(SDL_Renderer *aRenderer, SDL_Rect aFrame);
     virtual ~SecondViewController();
-    
-    virtual void handleEvent(SDL_Event e);
 };
 
 
